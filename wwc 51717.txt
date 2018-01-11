@@ -1,0 +1,108 @@
+* WWC 5.17.2017
+Python good beginners language b/c it's more readable.
+Programming is logic -
+python is interpreted language - no "compiling?"
+
+Assembly = computer level, basic programming, all 1s and 0s
+Computer can understand natively
+
+Compiled languages - C, have to be taken and run thru compiling process to run
+
+Interpreted language - python, interpreted to C, down to comp level
+
+Interpreter is where you run your code.
+Telling python to run your code, using the interpreter
+called, but not being run by you
+
+Interpreter: run line by line
+a = 1+1
+interpreter shows nothing
+print a
+you get your 2
+
+but you can put everything that you want inside of a file, and
+interpreter will run the whole thing!
+
+*Variables
+something you assign a value to
+
+python = monty python, not the snake
+**download python 3! have stopped developing py 2
+
+_runner_tests.py is the file we are looking at:
+
+#! = shebang - look for in this environment, python executable
+ says, i want this to run in python
+ utf-8 ? don't worry about it
+
+ package - os.path
+ function defined in os package
+ path is function/module
+ . is a joiner
+ os is the package
+
+ threeway package - functions part of the same project
+
+ from runner.runner_tests.test_mountain import TestMountain
+
+ runner/runner_tests/test_mountain (is what it means^)
+ from test_mountain, which is inside runner_tests folder,
+ import the TestMountain
+
+ Python is a whitespace language - it needs the blanks to understand
+
+ Interpreter is >>>
+ $ means they aren't in the interpreter
+
+ xxx() ALWAYS means it's a function
+ class ALWAYS defined by class
+ variable always variable, etc.
+
+ Ruby is popular for front-end (websites)
+ Javascript is mostly used on the web, databases sometimes
+ Java can be front and back end, servers, databases
+
+ Front end = what the user sees
+ Back end = what makes it all run
+
+ Python mostly used in back end, not front end
+ Django = python based website system (front end)
+ Pearl is similar to python, less wide
+
+ R is mostly statistical, pretty much entirely
+ Bootstrap = javascript framework for the web
+
+ Php = right behind the web, mostly front end - interface for server/databases
+
+ print(apples_to_oranges.__class__)
+ __ __ is a built in function that you don't typically modify
+
+ __what is this__
+
+ Scratch, green foot, hour of code - graphical programming
+ teaching logics, what loops are, if statements
+
+Below is a loop:
+ n = 1
+ while n!= 5:
+  print('n is not five')
+  n = n+1
+
+
+  LIST = anything in brackets [can hold multiple things]
+  [1, 2, 3]
+  element of a list
+  0 indexed: 1 is the 0th element of the list
+
+  listA = [1, 2, 3]
+  listA(0)
+  would return 1
+
+  listA(-1)
+  would return 3
+
+  listB = [1, 2, 3, 4, 5]
+  listB[1:3]
+  return 2, 3, and 4
+  This is called slicing a list, based on the 0 index
+  

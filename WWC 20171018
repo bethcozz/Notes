@@ -1,0 +1,131 @@
+## WOMEN WHO CODE 10.18.2017##
+- Dell, IBM = bad places to work
+- slack channel. FIGURE IT OUT!!! maybe carlos can help me
+- python2 is phasing out. So only use it for the koans
+
+- MAJOR DIFFERENCE B/W 2 AND 3
+    python2: print "message"
+    python3: print("message")
+
+In python, most functions are written as function_name(argument)
+    This increases standardization
+    *py2to3 transforms your python2 into python3
+
+RESOURCES
+    on meetup page
+        1. Dive into python3 - diveintopython3.net
+        2. How to think like a computer scientist: Interactive edition - 
+        http://interactivepython.org/courselib/static/thinkcspy/index.html
+            a. works good for when you don't have good python - can do at work!!! 
+            b. pythonanywhere also !!!
+
+if >==TRUE:
+    blah blah
+
+if not X
+    blah blah 
+
+^ these 2 things are synonymous, but the second is better b/c easier to read
+
+PROGRAMS, PROJECTS & HOW TO STRUCTURE THEM
+    python, from monty python
+docs.python-guide.org/en/latest/writing/structure
+    Hitchhiker's Guide to Python
+
+setup.py
+requirements
+directory structures
+docs
+tests
+
+- Read someone else's code and try yourself to learn
+
+.py = python files
+
+SETUP
+import tools, so as not to reinvent the wheel
+most packages available to download 
+e.g., quadratic equation function. don't need to rewrite every time - 
+write once and then import
+    or, go to pypi and see if a quadratic equation function already exists
+math package exists already, can import it
+
+REQUIREMENTS
+put everything you want to import from pypi in the same place, installs all to system
+
+DOCS
+documentation 
+**get a github account** do I have one already?
+good project = has documentation for the code
+
+SAMPLE
+where the actual program lives
+most python programs live in directory "sample"
+__init__.py (dunder init dunder dot py)
+    Two dunders means it's a built-in
+    init = initialization program
+        "from .core import hmm"
+        Where to enter the program and start running things
+core.py
+    def get_hmm(): #define a function, get_hmm
+        """Get a thought."""
+        return 'hmm...'
+
+
+    #f(x) = function of x
+    (Capital Letters = Class)
+
+
+
+TESTS
+helps when you release programs into the wild, make sure the program works
+
+pypi - python package 
+
+ubuntu/linux (dad <3)
+bash for windows 
+
+python interpreter - converts your python into computer language, then back up to you
+
+ERROR MESSAGES
+Traceback - helps debug code
+Type Error: cannot concatenate 'str' and 'int' objects
+    strings are "quoted" / 'quoted'
+    int=integer
+
+    str(): function that converts to string
+    e.g., "message" + str(1) = message1
+
+https://pythonforbiologists.com/29-common-beginner-errors-on-one-page/
+
+Testing frameworks = unittest, built in, has lots of documentation
+    unittest: a way of taking small pieces of code and testing just that small bit
+
+e.g., say that x is 8. I expect to see "yes"
+        say that x is 2. I expect to see "no"
+        say that x is 3. I expect to see "no"
+        say that x is "no". What should I expect to see? 
+            want to see "no," but I'll get an error
+            --> these are each unittests of my code 
+    x=4 
+    input("What is x?") #asks for input
+    x= str(x) #will give me a string
+    if x >3:
+        print ("yes")
+        else:
+        print ("no")
+
+you want to test both case that you expect and failure case, to make sure you get what you should get. have to think through both what you expect it to do, and what you expect other people to do with it. This is what QA people do - try to break somebody's code. 
+
+
+while loop
+while i >5:
+    blah blah
+i =i +1
+
+This iterates on i, runs the code again and again until i = 5
+
+integration testing= make sure that your code integrates nicely with everything else 
+stress test= if you put a ton of data at something, does it still work? if not, need to redesign 
+
+
