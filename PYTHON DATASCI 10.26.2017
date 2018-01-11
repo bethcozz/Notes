@@ -1,0 +1,417 @@
+PYTHON DATASCI 10.26.2017
+
+PANDAS library:
+    arrays = series
+    matrices = data frames
+
+INDEX - list of integers, labels you use to uniquely identify rows or columns
+can use [...] square brackets
+or special field .ix[] indexer
+
+dataframe object = spreadhseet
+series object - single row or column, indexed
+
+==
+!= 
+<> = true if unequal
+
+plain indexing
+data slicing
+arithmatic comparisons
+
+jupyter notebook in command line from desktop 
+
+
+MISSING VALUES
+machine generated data will have lots of missing values
+script can identify and treat the .'s
+
+could fill in missing val's with average other responses
+prefer approximation rather than dropping missing vals
+
+nothing like imputation hmm?
+Dropping rows and columns makes you lose info. better method is to try and fill in the missing values, not drop them completley. 
+
+CONCATENATE & TRANSFORM
+Concatenate = merge 
+Transform = reshape
+
+GROUPING
+why? compare subsets, deduce why subgroups differ
+or concentrate on specific subgroups
+
+####CHAPTER 2####
+PLOT BUILDING: 2 methods
+1. functional methods - call plot function on vars
+2. object-oriented method - built plot by generating blank object, 
+then populate blank object w/ plots and plot elements (2.2)
+    - 4 steps to object-oriented plotting:
+    a. create blank figure object
+    b. add axes
+    c. generate plots w/i figure object
+    d. specify plotting and layout parameters for plots within the figure
+Subplots - contains multiple plots
+
+2.3 Customizing data viz
+#help build clarity into your data viz
+#can get more colors at matplotlib.org 
+#also offers custom line styles and widths
+
+2.4 adding labels and annotations
+    Need to add a legend or annotate the plot 
+    Two methods:
+        a. functional
+        b. object-oriented 
+
+    Methods:
+        .annotate(xy, xytext, arrowprop)
+        (location we want to annotate, location of where we want text added, particularities of the arrow)
+        .legend(label and loc)
+        (label, what we're labeling, loc = where we want label added)
+
+2.5 Create viz from time series data
+    - Stat methods like autoregressive integrated moving average allows reliable predicting or forecasting based on historical time series data
+    - Constant time series - no changes in var over time
+    - Trended time series - net inc/dec in time series var over time
+    - Untrended time series -  inc/dec over seasons, but no net change over time
+    - Trended seasonal time series - var inc/dec with season, but net gain in var over time
+
+2.6 Histograms and scatterplots
+    - How to use thse plts to detct outliers, var dist and type, uncover correlations b/w vars
+    - Histogram: shows distribution of a var
+    - Scatterplots: show relationships b/w vars
+    - Scatterplot matrices: show core relations b/w vars
+    - Box plots: show var spread --> good for outlier detection
+
+##CHAPTER 3##
+    Array: 1 dim container for elements of same data type
+    Matrix: 2 dim container for elements stored in array
+    - Numpy does easy quick arithmatic on large datasets
+    - Can multiply/divide whole matrices times each other
+    - DOT PRODUCTS: math operations that takes 2 factors (sequential units of numbers w/ equal number of elements each - multiplies out to generate a single number), or scalar number
+
+MATRIX MULTIPLICATION
+    - first row * first column, then sum
+
+SUMMARY STATISTICS
+    - descriptive stats can generate automatic alerts with unusually high or low values (if health status)
+    - descriptive stats (1): values of observations with in a variable
+        sum/med/max/mean
+    - descriptive stats (2): variable spread
+        sd/variance/counts/quartiles
+    - uses:
+        detect outliers
+        plan data prep requirements for data processing
+        select features for use in machine learning
+
+Categorical variables:
+    - e.g., scrape reviews off web and code as good or bad
+    - summarize counts, grouping, var descriptions, crosstabs
+    - shows frequency counts for features
+
+   ##3.4 PARAMETRIC MODELS##
+    - find correlations b/w linearly related continuous numeric vars
+    - Pearson correlation coefficient (R)
+    - R val of 1 or -1 indicate strong relationship b/w two vars
+    - if close to 0, not linearly correlated
+        assumptions:
+            data normally distributed
+            continuous, numeric vars
+            linearly related
+    - R value close to 0, don't rule out possibility of nonlinear rels b/w vars
+
+    ##3.5 - nonparametric correlation analysis##
+    - spearman's rank correlation: works on ordinal variables, ranks variable pairs by extent of their correlation
+        assumptions: 
+                assumes ordinal vars
+                assumes non-linear rel
+                non-normal distribution
+    - Chi2 tables: p<.05, variables are correlated
+        assumptions:
+                assumes categorical or numeric vars
+                assume you've binned numeric vars 
+
+3.6 Transforming dataset distributions
+    Scaling your data - why? E.g., 1990 dollars to 2016 dollars
+        2 ways: normalization & standardization
+            normalization - put each obvs on a relative scale b/w 0 and 1
+                take value of your obvs and divide by sum of all obvs in a variable - avg
+            standardization - rescaling data to 0 mean and unit variance
+
+    Skitkit-learn: preprocessing tools:
+        scale, center, normalize, bin, and impute data
+
+### INTRO TO MACHINE LEARNING: 4.1 ###
+    Sales forcasting, customer segmenting, claim fraud detection, hedge fund classification
+    Regression, Bayesian, Dimesnion Reduction, Instance Based, Clustered
+        Regression
+            Linear & logistic regression
+        Bayesian
+            Naive Bayes
+        Dimension Reduction
+            Principal component analysis (PCA)
+        Instance Based
+            k-Nearest Neighbor
+        Clustering
+            K-Means clustering
+            Hierarchical clustering
+            Density-Based Spatial Clustering of Applications with Noise (DBSCAN)
+Vocabulary
+    Feature = variable/column
+    Instance = row/observation/data point
+    Target = DV
+    Data = predictor or set of predictor variables used to make prediction
+
+Break into test/training and break into random training sets
+    2/3 training, 1/3 test
+Supervised - make predictions from labeled data
+    E.g., spam detection 
+Unsupervised - make predictions from unlabeled data
+    E.g., want to put house on marget. Use historical records and key features, see what price those houses sold for and predict your house selling value
+Factor analysis - segway into machine learning
+
+##4.2 Factor analysis##
+    Latent variables - group similar respondents together
+    Regress on features to discover factors you can use to predict outcomes
+    MEaningful vars, but inferred rather than observed
+Assumptions:
+    Features are metric
+    Continuous or ordinal
+    Correlation greater than 0.3
+    More than 100 obvs
+    More than 5 obvs per feature
+    Homogenous sample
+    
+##4.3 Singular Value Decomposition (SVD)##
+    - linear algebra method that decomposes a matrix into 3 resultant matrices to reduce information redundancy and noise 
+    - most commonly used for principal component analysis (PCA) in machine learning
+    - how SVD works
+        original matrix A
+        decompose into u, S, and v
+            u = left orthogonal matrix; holds important nonredundant info about observations in a
+            v = right orthogonal matrix; holds important nonredundant info about features in an original dataset
+            S = diagonal matrix, contains all info about decomposition processes performed during decomp
+
+    - how PCA works
+        unsupervised ML algorithm discovering relationships b/w vars
+            reduces vars to a set of uncorrelated synthetic representations - 
+                principal components
+                    e.g., grocery store chain reward card purchase data.
+                    want to identify key factors (age, income?) that most affect customer behavior
+                    - Can decompose into one vector that describes factors influencing purchasing behavior, and one vector w/ probabilities that products will be purchased based on these factors
+        principal compoents capture important variance in a dataset but without redundancy, noise, or outliers
+            e.g., fraud, spam detection, image, speech recognition, outlier removal
+
+    Both factors and components represent what's left after redundancy and noise
+        use as X vars for ML algorithms to gen predictions from compressed representations of data
+
+    Explained variance ratio: tells how much info is compressed in first few components
+        use to calculate cumulative variance
+        with cum variance, find out how many components to keep
+        must keep at least 70% of dataset's original information
+
+CHAPTER 5: OUTLIER ANALYSIS 
+- 3 main types of outliers
+    1. point outliers - anomalous WRT to majority of observations in a feature (univariate outlier)
+    2. contextual outliers - anomalous given a specific context
+        location and temperature - 82 degree in Jan in CA, vs. 82 degree in Jan in Moscow
+    3. collective outliers - collection of obsevations that are anomalous but appear close to one another b/c have simliar anomalous value
+- Tukey method, multivariate analysis w/ boxplots and scatterplot matrices, and DBSCAN and PCA machine learning methods
+
+Outlier detection as analytical method of its own merit:
+    E.g., fraud detection, equipment failure notification, cybersecurity event notification
+
+- Tukey methods: can detect high or low variables, obvs identified here should be treated as potential outliers to be investigated furhter
+    - Boxplot whiskers are set at 1.5 Inter-quartile range (IQR): distance b/w lower and upper quartile
+    - any points beyond this are considered outliers
+
+    - Tukey outlier labeling method
+        calculating mathematically
+
+#5.2 multivariate methods
+-Can use box plot to plot x and y at the same time
+-And scatterplot matrix too
+
+#5.3 DBSCAN
+    -DBSCAN: unsupervised ML method that clusters core samples (dense aread of a dataset) and denotes non-core samples (sparse portions of dataset)
+    - ex. self-driving cars. predict lanes from lines - density
+    - use to identify collective outliers
+    - outliers should be less than 5% total N of dataset
+        - adjust model parameters accordingly
+    - two parameters:
+        - eps: max difference b/w 2 samples for them to be clustered in the same neighborhood (starts at eps = 0.1)
+        - min_samples: min number of samples in a neighborhood for a data point to qualify as a core point (start w/ very low sample size)
+            - adjust these parameters until just below 5% of dataset is labeled as outliers
+
+##6. Cluster Analysis
+6.1: K-means method
+    - unsupervised algorithm for predicting groupings from within an unlabeled dataset
+    - predictions based on:
+        1. number of cluster centers present (k)
+        2. nearest mean values (measured in Euclidian distance b/w obvs)
+    -ex. market price and cost, customer segmentation, insurance fraud detection
+    - need to:
+        1. scale vars before using model
+        2. look @ scatterplot or data table to estimate number of centroids (cluster centers) to set for the k parameter in the model
+
+6.2 Hierarchical methods
+- unsupervised method to predicted subgroups w/i data by finding distance b/w each datapoint and its nearest neighbors. Each linked to most nearby neighbor
+- analogy: geneticist trying to identify gene expression. apply hiearchical clustering to evalute distance in gene expression profile. Most similar data points are clustered into same genetic functional group
+- can find subgroups by looking at DENDROGRAM:
+    - a tree graph useful for visually displaying taxonomies, lineages, and relatedness
+- ex. process management, customer segmentation analysis, social network analysis
+    - using a dendgrogram: want max distance to be 150
+    set line where y = 150
+    along line, look where dendrogram intersects the y=150 line. 
+    In this example, there are 5 branches that cross the 150 line, so 5 clusters
+    set max at y = 500, then we'd only have 2 clusters.
+
+Clustering parameters for hierarchical methods:
+    - Distance metrics:
+        Euclidian
+        Manhattan
+        Cosine
+    -Linkage parameters:
+        Ward
+        Complete
+        Average
+Try every combo of parameters possible, the one w/ most accurate results is the one you want to go with.
+
+6.3 k-Nearest Neighbor Classification
+- supervised classifier that memorizes obvs from within a labeled test set to predict classification labels for new, unalbeled observations
+    - predicts based on how similar training obvs are to new, incoming obvs
+        - more similar, more likely classified w/ same label
+- predict automatic/manual based on #gears and carborators
+    - ex. stock prices, recommendation systems, trip planning, credit risk analysis
+
+Assumptions:
+    1. little noise
+    2. labeled
+    3. only contains relevant features
+    4. has distinguishable subgroups
+*AVOID using k-NN on large datasets - it will take a long time!
+
+##7. Network Analysis w/ NetworkX##
+    Examples of network analysis:
+        social media marketing strategy
+        infastructure system design
+        financial risk mgmt
+        public health mgmt
+    Model & evalute network dynamics.
+
+Key Terms:
+    1. Network: a body of connected data that's evaluated during graph analysis
+    2. Graph: data viz schmatic depicted network data
+    3. Nodes: vertices around which a graph is formed
+    4. Edges: lines that connect vertices within a graph
+    5. Directed graph (aka digraph): graph where there is direction assigned to each edge that connects a node
+    6. Directed edge: edge features that has been assigned a direction b/w nodes
+    7. Undirected graph: graph where all edges are bidirectional
+    8. Undirected edge: bidirectional edge feature
+    9. Graph size: # of edges in the graph
+    10. Graph order: # of vertices in a graph
+    11. Degree: # of edges connected to a vertex, with loops counted 2x -- measure of CONNECTEDNESS
+
+Graph generator: generating synthetic variations of graphs to assess how well your graph assessment algorithm performs. 6 types:
+    1. graph drawing algorithms*
+    2. network analysis algorithms
+    3. algorithmic routing for graphs
+    4. graph search algorithms*
+    5. subgraph algorithms
+*most basic types - will be discussed
+
+#7.3 Simulate a social network in 3 steps:
+    1. generate graph object and edge list
+    2. assign attributes to graph nodes
+    3. visualize the network
+
+##7.4 Social Network Analysis Metrics
+Key Terms:
+    1. Degree: node's connectedness
+    2. Successors: a successor node is a node that could serve as a backup and potentially replace an influential node in a network. fucntion of a successor node is to preserve the flow of influence throughout a network in the case where an important node is removed
+    3. Neighbors: adjacent nodes in a network 
+    4. In-degree: theory that if a person or profile has a lot of inbound connections, then they're considered prestigious b/c many different people and profiles want to connect w/ them
+    5. Out-degree: if a person or profile has a lot of outgoing connections, sometimes considered influential. In theory, they have more of a platform across which to engage and interact w/ many outbound connections
+
+    ##8. Basic Algorithmic Learning
+
+    8.1 Linear regression model
+    - Ex. key charactieristics of homes, relationship to sale price. can predict price based on that
+    - Statistical machine learning algorithm
+    - Simple or multiple
+    - Use cases: sales forecasting, resource consumption forecasting, supply cost forecasting, telecom service lifecycle forecasting
+    - Assumptions:
+        all variables are continuous numeric, not categorical (?? NO)
+        data is free of missing values and outliers
+        linear relationship b/w predictors and predictant
+        all predictors are independent of one another
+        residuals are normally distributed
+
+8.2 Logistic Regression
+    - predict value of categorical var based on relationship w/ predictors
+    - Ex. customer dataset (age, income, call duration, minutes, customer status : active or cancelled). Can build logistic regression using these predictive factors to predict whether customer is likely to cancel services soon.
+        Called "customer churn model"
+    - Use cases: purchase propensity v. ad spend analysis, customer churn prediction, employee attrition modeling, hazardous event prediction
+    - Assumptions
+        data free of missing values
+        predictant variable in binary or ordinal 
+        all predictors are independent
+        there are at least 50 obvs per predictor variable to ensure reliable results
+    
+    8.3 Naive Bayes
+    - ML method you can use to predict likelihood of an event occurring given evidence present in data
+        -> conditional probability:
+            probability of B given A = Probability of A and B / probability of A
+    - Ex. email records marked as spam or not spam to build spam monitoring model
+    - 3 types of Naive Bayes models:
+        1. multinomial - good for when your features (categorical or continuous) describe discrete frequency counts (e.g., word counts)
+        2. bernoulli - good for making predictions from binary features
+        3. gaussian - good for making predictions from normally distributed features
+    - Use cases: spam detection, customer classification, credit risk prediction, health risk prediction
+    - Assumptions
+        predictors are indepedent of each other
+        a priori assumption: assume that past predictions still hold true
+            -> when we make predictions from historical values, we will get incorrect results if present circumstances have changed
+                -> regression models maintain a priori assumptions too
+
+
+    ##9: Web-based data viz with plotly
+
+    9.1 can use numpy and plotly to make data viz's 
+        - Plotly is interactive (can download, zoom, get pop-up labels, and can see data and code. collaborative)
+        - free up to 50 API calls/day
+        - works w/ python (numpy, pandas, matplotlib, jupyter), R, Excel, SQL
+        - cufflinks: used for binding plotly to pandas objects within jupyter notebook
+        - to generate plotly plots from numpy objects, you use these attributes:
+            - traces: objects that describe a single var of data in a graph, e.g., scatterplot or heatplot
+            - layouts: use to customize layout elements of plot, e.g., title, x-axis, annotations
+
+##10: Web Scraping w/ Beautiful Soup
+    - Use cases: 
+        - existing blog -> new blog resources page (extract all links from your full blog)
+        - ecommerce store automation
+        - hydrological analysis
+        - emergency resource allocation planning
+        - oil and gas producion intel
+    - FOUR Beautiful Soup object types:
+        1. beautiful soup object
+        2. tag object
+        3. navigable string object
+        4. comment object
+    - 3 sections:
+        1. parsing data
+            -  html/xml doc just passed to the BS constructor
+            - constructor converts doc to unicode and parses w/ built-in html parser (by default)
+        2. printing data that's in a parse tree
+        3. searching and retrieving data from a parse tree
+            - find_all() method
+                - name argument
+                - keyword arg
+                - string arg
+                - lists
+                - boolean vals
+                - strings
+                - regular expressions
+            - can pass any of these args into find_all() method to use filters and return either strings or tags
+            
+

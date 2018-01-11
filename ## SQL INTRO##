@@ -1,0 +1,172 @@
+## SQL INTRO##
+
+two tables: people and states
+name, location, points, team, etc. 
+states: abbrev and full names, info on census region
+
+mockaroo.com is how generated
+state due from us census website
+
+DB browser for sql lite. 
+
+to run = function + f5
+
+a database is a collection of people
+name, city, color 
+each kind of info is column (set), set of info rows (record)
+fields and records make up a table
+
+could use excel
+but database allows more tables, rules and relationships b/w tables
+schema = how fields, records, relationships are configured
+
+programming foundations: databases
+
+spreadsheet - can sum total, sort, but can't ask how many ppl in ny like purple, more complicated
+
+SQL= structured query language (1974)
+standardized way of questioning the database
+
+- write Qs comp can understand
+- often a series of smaller questions, strucutred how database can understand
+
+SQL, originally called sequel - some pronounce sequel
+language = SQL
+sequel in product names
+some ppl have strong opinions about it
+
+BASICS OF STATEMENT
+SQL is whitespace independent (unlike python)
+break across multiple lines for easier to understand
+
+each line in a statement is a clause
+constructed out of keywords (functions)
+fieldnames - tell database where to look 
+predicates = expression (value/condition)
+operators - allow comparisons
+
+SELECT / ORDER BY - customarily written in capital letters
+
+statements must end with semicolon (like what, R??);
+
+most basic way = SELECT
+tells DB we want to return some information
+
+single quotes= text
+
+WHERE = add condition to a SELECT statement
+FROM statement must go before WHERE 
+
+
+SELECT first_name, last_name, shirt_or_hat, state
+FROM people
+WHERE state='CA' OR state='CO' AND shirt_or_hat='shirt';
+
+here, shows us cases where state is CA or cases where state is CO and shirt or hat = shirt --> it paired second two conditions
+
+SELECT first_name, last_name, shirt_or_hat, state
+FROM people
+WHERE (state='CA' OR state='CO') AND shirt_or_hat='shirt';
+
+% = * in stata language "C% not C*"
+
+SELECT first_name, last_name, state
+FROM people
+WHERE state LIKE 'C%';
+
+LIMIT= give first 5
+OFFSET = skip first 5 lines
+
+JOIN - ask for associated records across tables based on common piece of info
+match/merge. in our example, state abbrev is merge on
+
+SELECT first_name, state
+FROM people
+JOIN states;
+= wrong, 50*1000 results (50 states * 1000 people)
+get one row from right table for every row in left table = CROSS JOIN
+INNER JOIN = where there's a match between info from one table and the other
+doesn't have to be 1:1, (can be m:m or 1:m or m:1)
+can be values that do not match - there's joins that can deal with that too
+INNER = overlap
+OUTER = don't have a match
+
+OUTER JOIN = "LEFT JOIN", gives "null" for non-matching vars (null in left)
+"RIGHT JOIN" is same way, but nulls based on right table not left (null in right)
+FULL OUTER JOIN = gives all info from both tables, with null values on both left and right
+
+
+RIGHT:
+SELECT first_name, state
+FROM people
+JOIN states
+ON people.state=states.state_abbrev;
+this means, state_abbrev in states table means state in people table (merge on, but when the vars have different names)
+
+
+SOME JOINS DON'T WORK W/ SOME PROGRAMS
+
+GROUP BY
+SELECT first_name, COUNT(first_name)
+FROM people;
+#the above is wrong - doesn't work
+
+SELECT first_name, COUNT(first_name)
+FROM people
+GROUP BY first_name;
+#this is the way you would do it
+
+SELECT state, quiz_points, COUNT(quiz_points)
+FROM people
+GROUP BY quiz_points;
+#this is hard to understand, below is better
+
+SELECT state, quiz_points, COUNT(quiz_points)
+FROM people
+GROUP BY state, quiz_points;
+
+DATA TYPE
+BINARY: 1/0
+DATE/TIME: time val
+NUMBER: diff types of integers, etc.
+TEXT: strings (varchar - variable character)
+BOOLEAN: T/F
+NULL: missing (.)
+
+These are useful when you're creating a table
+
+MATH IN SQL
+most basic, use a SELECT statement and basic operation
+mathematical operations, arithmetic 
+
+SUB-QUERY = multiple select commands
+
+SELECT first_name, last_name, quiz_points
+FROM people
+WHERE quiz_points=max(quiz_points);
+^ wrong. max needs to be part of select query
+
+SELECT first_name, last_name, quiz_points
+FROM people
+WHERE quiz_points=(SELECT MAX(quiz_points) FROM people);
+^ this is better
+
+If modifying data in SQLlite, need to hit "write changes" to keep your database edits
+
+UPDATE
+change record in a table
+UPDATE tablename SET field1=val1, field2=val2 WHERE condition;
+
+COMMON MISTAKES 
+- typos and syntax errors
+- read the error, break down statement
+- break down statement, test parts, and there you can diagnose what you did wrong
+- text vals must be in 'single quotes'
+- use `back ticks` if there are spaces in field names
+- keep development journal in plain text
+- copy/paste your SQL code into a plain text editor
+- check for smart quotes
+- use plain-text.sql to share attachments
+- to find null vals, use IS NULL/ IS NOT NULL 
+- make sure your matching conditions are tested before updating a table
+
